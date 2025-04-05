@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    PIDpress
+{% endblock %}
+
+{% block main %}
+<style>
+    .card-body{
+        background-color: rgb(105, 1, 16);
+    }
+
+    .scrollbar {
+        padding: 10px 0;
+        white-space: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    .scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar a {
+        display: inline-block;
+        text-align: center;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 0 5px;
+        transition: background-color 0.2s ease-in-out;
+    }
+    .scrollbar a:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .card{
+        background-color: rgb(105, 1, 16);
+        color: rgb(232, 226, 209)
+    }
+    .modal-body{
+        color: black;
+    }
+    </style>
+    
+    <div class="container">
+        <!-- Category Scrollbar -->
+        <div class="scrollbar mb-3" style="overflow-x: auto; white-space: nowrap;">
+            <a href="/pidpress?category=All" class="btn {% if selected_category == 'All' %}btn-primary{% else %}btn-outline-secondary{% endif %} mx-1">
+                All
+            </a>
+            {% for category in categories %}
+            <a href="/pidpress?category={{ category['category'] }}" class="btn {% if category['category'] == selected_category %}btn-primary{% else %}btn-outline-secondary{% endif %} mx-1">
+                {{ category['category'] }}
+            </a>
+            {% endfor %}
+        </div>
+    
+        <!-- News Articles -->
+        <div class="row">
+            {% if news_articles %}
+                {% for article in news_articles %}
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ article['title'] }}</h5>
+                                <p class="card-text">{{ article['content'][:100] }}...</p> <!-- Short preview of content -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{ article['id'] }}">
+                                    Read More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal{{ article['id'] }}" tabindex="-1" aria-labelledby="modalLabel{{ article['id'] }}" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabel{{ article['id'] }}">{{ article['title'] }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{ article.img }}" class="img-fluid mb-3" alt="Article Image">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="alert alert-warning" role="alert">
+                No articles found for this category.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <style>
+        .btn-info {
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+
+        .btn.btn-primary{
+            background-color: white;
+            color: black;
+            border: rgb(232, 226, 209)
+        }
+    </style>
+            
+    
+
+{% endblock %}

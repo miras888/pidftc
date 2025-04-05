@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}
+    My courses
+{% endblock %}
+{% block main %}
+    <style>
+        .btn-primary {
+            background-color: rgb(136, 6, 6);
+            --bs-btn-hover-bg: red;
+        }
+    </style>
+    <h1>My courses</h1>
+    {% for my in my %}
+        {% if my.courses != "" %}
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                    <h5 class="card-title">{{my.courses}}</h5>
+                    <form method="post" action="/mycourses">
+                        <button class="btn btn-primary">Unsubscribe from the course</button>
+                    </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {% else %}
+            <h4>You do not sign up for any courses</h4>    
+        {% endif %}
+    {% endfor %}
+    <style>
+        .btn-info {
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+    </style>
+    
+{% endblock %}

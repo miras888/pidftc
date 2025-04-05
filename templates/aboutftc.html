@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About FTC
+{% endblock %}
+
+{% block main %}
+    <style>
+        h1 {
+            color: rgb(105, 1, 16);
+            margin-bottom: 20px;
+        }
+        h5 {
+          margin-bottom: 50px;
+          color: rgb(105, 1, 16);
+        }
+      .btn-primary {
+        margin-bottom: 20px;
+        margin-left: 30px;
+        margin-right: 30px;
+      }
+    </style>
+    <h1>About FTC</h1>
+    <h5>FIRST® Tech Challenge is a student-centered program aimed at providing students with a unique and engaging experience. Each year, teams participate in a new game where they design, build, test, and program robots to perform various tasks autonomously and under operator control. Participants and alumni of the FIRST program gain access to educational and career opportunities, connections to exclusive scholarships and employers, and become part of the FIRST community for life.</h5>
+    <a href="/static/game-manual.pdf" download class="btn btn-primary">Download a game manual</a>
+    
+{% endblock %}

@@ -1,0 +1,214 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Useful Resources
+{% endblock %}
+
+{% block main %}
+<style>
+    body {
+        background-color: #f0f4f8;
+        color: #333;
+        font-family: "Itim";
+    }
+
+    .hero {
+        background: rgb(105, 1, 16);
+        padding: 60px 0;
+        color: rgb(232, 226, 209);
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 40px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+
+    .resource-container {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        padding: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .resource-container:hover {
+        transform: translateY(-5px);
+    }
+
+    .resource-title {
+        font-size: 1.5rem;
+        color: #690110;
+        margin-bottom: 10px;
+    }
+
+    .resource-description {
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    .resource-link {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #690110;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .resource-link:hover {
+        background-color: #8a1c2c;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.5rem;
+            /* Responsive font size */
+        }
+
+        .hero p {
+            font-size: 1rem;
+            /* Responsive paragraph size */
+            padding-left: 10px;
+            /* Adjust padding for mobile */
+            padding-right: 10px;
+            /* Adjust padding for mobile */
+            margin-bottom: -10px;
+            /* Adjust margin for mobile */
+            line-height: .9;
+            /* Adjust line height for mobile */
+
+        }
+
+        .resource-title {
+            font-size: .9rem;
+            /* Responsive title size */
+            margin-bottom: -5px;
+            /* Adjust margin for mobile */
+        }
+
+        .resource-description {
+            font-size: .8rem;
+            /* Responsive description size */
+        }
+
+        .resource-link {
+            font-size: .8rem;
+            /* Responsive link size */
+        }
+
+        .resource-container {
+            padding: .8rem;
+            /* Responsive container padding */
+        }
+
+        body {
+            padding-left: .5rem;
+            /* Responsive body padding */
+            padding-right: .5rem;
+            /* Responsive body padding */
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            line-height: .9;
+            /* Adjust line height for mobile */
+        }
+
+        h2 {
+            font-size: .9rem;
+            /* Responsive heading size */
+        }
+
+        h3 {
+            font-size: .8rem;
+            /* Responsive heading size */
+        }
+
+        h4 {
+            font-size: .7rem;
+            /* Responsive heading size */
+        }
+
+        h5 {
+            font-size: .6rem;
+            /* Responsive heading size */
+        }
+
+        h6 {
+            font-size: .5rem;
+            /* Responsive heading size */
+        }
+
+    }
+</style>
+
+<div class="hero">
+    <h1>Explore Our Useful Resources</h1>
+    <p>Your gateway to mastering robotics and enhancing your skills.</p>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="resource-container">
+                <h2 class="resource-title" style="margin-bottom: 10px;">Translation of Game Manual 0</h2>
+                <a href=static\translation_of_gm0_by_pidftc.pdf class="resource-link"
+                    download="static\translation_of_gm0_by_pidftc.pdf" target="_blank">Download Translation Game Manual
+                    0</a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="resource-container">
+                <h2 class="resource-title" style="margin-bottom: 10px;">Game Manual</h2>
+                <a href=static\game-manual.pdf class="resource-link" download="static\game-manual.pdf"
+                    target="_blank">Download Game Manual</a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="resource-container">
+                <h2 class="resource-title" style="margin-bottom: 10px;">Dean's List Russian Translation</h2>
+                <a href=static\deans_list_russian_ver.pdf class="resource-link"
+                    download="static\deans_list_russian_ver.pdf" target="_blank">Download Dean's List Russian</a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="resource-container">
+                <h2 class="resource-title" style="margin-bottom: 10px;">Dean's List Kazakh Translation</h2>
+                <a href=static\deans_list_kazakh_version.pdf class="resource-link"
+                    download="static\deans_list_kazakh_version.pdf" target="_blank">Download Dean's List Kazakh</a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="resource-container">
+                <h2 class="resource-title" style="margin-bottom: 10px;">Translation of TeleOp on Russian</h2>
+                <a href=static/translation_teleop class="resource-link" download="static\deans_list_kazakh_version.pdf"
+                    target="_blank">Download Translation of TeleOp on Russian</a>
+            </div>
+        </div>
+        <!-- Add more resource containers as needed -->
+
+    </div>
+</div>
+
+{% endblock %}

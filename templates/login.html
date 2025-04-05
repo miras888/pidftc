@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block main %}
+<style>
+    body {
+        font-family: "Itim";
+    }
+
+    .mb-3,
+    .btn-primary {
+        margin: 30px;
+    }
+</style>
+<img src="/static/logo.png" style="width: 300px;">
+<form action="/login" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username"
+            placeholder="Username" type="text">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+    </div>
+    <button class="btn btn-primary" type="submit">Log In</button>
+</form>
+<p style="margin-bottom: 0px;">Don't have an account</p>
+<a class="btn btn-primary" href="/register" style="margin-top: 10px;">Register</a>
+{% endblock %}

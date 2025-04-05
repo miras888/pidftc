@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Lesson 3 of CAD course
+{% endblock %}
+{% block main %}
+<style>
+    video {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+</style>
+{% for cad in lesson3cad %}
+<h1>{{cad.name}}</h1>
+<div>
+    <iframe width=80% height="500" src="{{ cad.link }}">
+    </iframe>
+</div>
+{% endfor %}
+{% endblock %}

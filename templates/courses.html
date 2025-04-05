@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Courses
+{% endblock %}
+
+{% block main %}
+    <style>
+        h1 {
+            color: rgb(105, 1, 16);
+        }
+        p {
+            color: black;
+        }
+        h4 {
+          margin-bottom: 80px;
+        }
+        .courses {
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+        .learnm {
+            margin-top: 20px;
+            margin-bottom: 35px;
+        }
+        
+    </style>
+    <div class="courses">
+    <h1> Our courses </h1>
+    <div class="learnm">
+        <a href="/aboutftc" class="btn btn-primary">Learn more about FTC</a>
+    </div>
+    {% for course in courses %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+            <div class="card h-100">
+                <img src="{{course.image}}" class="card-img-top" alt="">
+                <div class="card-body">
+                <h5 class="card-title">{{course.name}}</h5>
+                <a href="/{{course.name.lower().replace(' ', '')}}" class="btn btn-primary">Learn more</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <style>
+        .btn-info {
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+
+        .btn.btn-primary{
+            color:black;
+            background-color: white;;
+        }
+    </style>
+    
+   
+{% endblock %}

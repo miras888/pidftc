@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %}
+CAD course
+{% endblock %}
+{% block main %}
+<style>
+    body {
+        background-color: rgb(232, 226, 209);
+
+    }
+
+    h1 {
+        color: rgb(232, 226, 209);
+        margin-top: 40px;
+
+    }
+
+    h6,
+    p {
+        color: rgb(232, 226, 209);
+        margin-top: 40px;
+
+    }
+
+    button {
+        margin-top: 40px;
+    }
+
+    .btn-primary {
+        margin-top: 30px;
+    }
+
+    .cad {
+        margin-left: 60px;
+        margin-right: 60px;
+
+    }
+
+    .text {
+        border: 2px rgb(105, 1, 16);
+        background-color: rgb(105, 1, 16);
+        border-radius: 10px;
+    }
+</style>
+<div class="cad">
+    <img style="display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: center;" src="/static/cadingcourse.jpg">
+    <div class="text">
+        {% for cad in cad %}
+        <h1>{{cad.name}}</h1>
+        <br>
+        <p>{{cad.description}}</p>
+        <h6>Number of lessons: {{cad.lessons}}</h6>
+        {% endfor %}
+    </div>
+    {% for user_cd in user_cd %}
+    {% if user_cd.courses == "Course of CADing" %}
+    <a href="/lesson1ofcad" class="btn btn-primary" style="margin-bottom: 20px">Go to the 1 lesson</a>
+    <a href="/lesson2ofcad" class="btn btn-primary" style="margin-bottom: 20px">Go to the 2 lesson</a>
+    <a href="/lesson3ofcad" class="btn btn-primary" style="margin-bottom: 20px">Go to the 3 lesson</a>
+    <a href="/lesson4ofcad" class="btn btn-primary" style="margin-bottom: 20px">Go to the 4 lesson</a>
+    {% else %}
+    <form method="post" action="/courseofcading">
+        <button class="btn btn-primary" type="submit">Sign up for course</a>
+    </form>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

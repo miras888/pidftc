@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    3D Models
+{% endblock %}
+
+{% block main %}
+    <style>
+      .row {
+        margin-left: 60px;
+        margin-right: 60px;
+        margin-top: 30px;
+      }
+      @media screen and (max-width: 450px) {
+        .models, .row, .card{
+          margin: 0px;
+
+        }
+      }
+      .col-sm-6.mb-3.mb-sm-0 {
+        margin-bottom: 20px;
+      }
+      .col-sm-6{
+        margin-bottom: 20px;
+      }
+      .card-body, .card {
+        background-color: rgb(105, 1, 16);
+        border: 5px;
+        border-radius: 50px;
+        color: rgb(232, 226, 209)
+      }
+      h5 {
+        color: rgb(0, 0, 0);
+      }
+      h1 {
+        color: rgb(105, 1, 16);
+      }
+      .btn.btn-primary {
+        background-color: white;
+        border: none;
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border-radius: 50px;
+      }
+      
+      .btn.btn-primary:hover {
+        background-color: #45a049;
+      }
+      
+      @keyframes scaleUp {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.1);
+        }
+      }
+      
+      .btn.btn-primary:active {
+        animation: scaleUp 0.3s;
+      }
+    </style>
+    <div class="models">
+    <h1>Our 3D models</h1>
+    <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">3D model of claw V4</h5>
+              <a href="/static/kleshnya_v4.stl" download class="btn btn-primary">Download 3D models</a>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">3D model of grip</h5>
+              <a href="/static/grip-secondleg.stl" download class="btn btn-primary">Download 3D models</a>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">3D model of claw V1</h5>
+              <a href="/static/kleshnya_prost_v1.gcode" download class="btn btn-primary">Download 3D models</a>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">3D model of pixel</h5>
+              <a href="/static/FTC_Pixel.stl" download class="btn btn-primary">Download 3D models</a>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">3D model of cl</h5>
+              <a href="/static/kleshnya_v4.stl" download class="btn btn-primary">Download 3D models</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      .btn-info {
+          font-size: 12px;
+          padding: 5px 10px;
+      }
+  </style>
+  
+{% endblock %}

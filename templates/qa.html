@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block title %} - Q&A{% endblock %}
+
+{% block main %}
+<style>
+    .btn-outline-dark {
+        transition: all 0.2s ease;
+        border-width: 2px;
+    }
+
+    .btn-outline-dark:hover,
+    .btn-outline-dark.active {
+        background-color: rgb(105, 1, 16);
+        color: white !important;
+        border-color: rgb(105, 1, 16);
+    }
+
+    @media screen and (max-width: 576px) {
+        .btn-outline-dark {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .container {
+            padding: 0 10px;
+        }
+
+        .card {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-8 mb-4 mx-auto">
+        <h2 class="mb-3">Q&A Forum</h2>
+
+        <form method="post" class="card p-4 mb-4 shadow-sm">
+            <h5 class="mb-3">Ask a Question</h5>
+            <input name="title" class="form-control mb-2" placeholder="Title" required>
+            <textarea name="body" class="form-control mb-2" rows="4" placeholder="Describe your question..."
+                required></textarea>
+            <select name="category" class="form-select mb-3" required>
+                <option disabled selected>Select category</option>
+                <option>Programming</option>
+                <option>3D Modeling</option>
+                <option>Robotics</option>
+                <option>CAD</option>
+                <option>General</option>
+            </select>
+            <button class="btn btn-dark">Post</button>
+        </form>
+
+        <div class="card shadow-sm p-3 mb-4">
+            <h5 class="mb-3">Filter by Category</h5>
+
+            {% set icons = {
+            "Programming": "💻",
+            "3D Modeling": "🧱",
+            "Robotics": "🤖",
+            "CAD": "📐",
+            "General": "🧠"
+            } %}
+
+            <div class="d-flex flex-wrap gap-2">
+                <a href="/qa?category=All"
+                    class="btn btn-outline-dark btn-sm px-3 py-2 {% if selected_category == 'All' %}active{% endif %}">
+                    All
+                </a>
+                {% for cat in categories %}
+                <a href="/qa?category={{ cat.category }}"
+                    class="btn btn-outline-dark btn-sm px-3 py-2 {% if selected_category == cat.category %}active{% endif %}">
+                    {{ icons.get(cat.category, "📁") }} {{ cat.category }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <h5 class="mb-3">Questions {% if selected_category != 'All' %}in {{ selected_category }}{% endif %}</h5>
+
+        {% for q in questions %}
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h5>
+                    <a href="{{ url_for('question_detail', question_id=q.id) }}"
+                        class="text-decoration-none text-primary">{{ q.title }}</a>
+                </h5>
+                <p class="text-muted mb-0">by {{ q.username }} | {{ q.created_at }} | Category: {{ q.category }}</p>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-muted">No questions yet in this category.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
