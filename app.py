@@ -4,19 +4,8 @@ from flask import Flask, flash, redirect, render_template, request, session, sen
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import apology, login_required, lookup
-from flask_mail import Mail, Message
 
 app = Flask(__name__)
-
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'pidftc24670@gmail.com'  
-app.config['MAIL_PASSWORD'] = 'PidWinHouston25!' 
-app.config['MAIL_DEFAULT_SENDER'] = 'marvel551478@gmail.com'
-
-mail = Mail(app)
 
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
