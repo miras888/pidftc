@@ -10,10 +10,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- <link rel="icon" type="image/png" sizes="16x16" href="static/logo_16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="static/logo_32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="static/logo_48.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="static/logo_512.png"> -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/logo_16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/logo_32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/logo_96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/logo_192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/static/logo_512.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/logo_180.png">
+
+    <meta name="theme-color" content="#e8e2d1">
 
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
@@ -36,29 +41,53 @@
         .navbar {
             background-color: #fff5f5;
             border-bottom: 2px solid var(--deep-red);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
         .navbar-brand {
             font-weight: bold;
+            font-size: 22px;
         }
 
         .nav-link {
+            position: relative;
             margin-left: 10px;
             font-size: 18px;
-            transition: all 0.3s;
+            color: var(--deep-red);
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: 4px;
+            height: 2px;
+            background-color: var(--deep-red);
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-link:hover {
+            background-color: rgba(105, 1, 16, 0.05);
+            border-radius: 6px;
+            color: var(--accent-red);
         }
 
         .nav-link.active {
             font-weight: bold;
-            color: rgb(232, 226, 209) !important;
+            color: #fff !important;
             background-color: var(--deep-red);
-            padding: 6px 15px;
-            border-radius: 5px;
-        }
-
-        .nav-link:hover {
-            color: var(--deep-red);
-            background-color: var(--cream);
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .alert-warning {
@@ -71,7 +100,6 @@
         }
     </style>
 
-    </style>
 </head>
 
 <body>
