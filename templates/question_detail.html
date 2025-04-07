@@ -13,20 +13,36 @@
         <p>{{ question.body }}</p>
         <small class="text-muted">by {{ question.username }} on {{ question.created_at }} |
             Category: {{ question.category }}</small>
+
+        {% if question.user_id == session["user_id"] %}
+        <form action="{{ url_for('delete_question', question_id=question.id) }}" method="post"
+            onsubmit="return confirm('Delete this question? This will also remove all its answers.');">
+            <button type="submit" class="btn btn-danger mt-2">Delete Question</button>
+        </form>
+        {% endif %}
     </div>
 
     <h5>Answers</h5>
+    {% if answers %}
     {% for a in answers %}
     <div class="card mb-2 shadow-sm">
         <div class="card-body">
             {{ a.body }}
             <br>
             <small class="text-muted">— {{ a.username }} on {{ a.created_at }}</small>
+
+            {% if a.user_id == session["user_id"] %}
+            <form action="{{ url_for('delete_answer', answer_id=a.id) }}" method="post" class="mt-2"
+                onsubmit="return confirm('Delete this answer?');">
+                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            </form>
+            {% endif %}
         </div>
     </div>
+    {% endfor %}
     {% else %}
     <p class="text-muted">No answers yet.</p>
-    {% endfor %}
+    {% endif %}
 
     <form method="post" class="card p-3 mt-4 shadow-sm">
         <h6>Write your answer:</h6>
