@@ -13,6 +13,10 @@ Session(app)
 
 db = SQL("sqlite:///pid.db")
  
+@app.before_request
+def enable_foreign_keys():
+    db.execute("PRAGMA foreign_keys = ON;")
+
 @app.route("/login", methods = ["GET", "POST"])
 def login():
     session.clear()
@@ -158,7 +162,7 @@ def qa():
         category = request.form.get("category")
         user_id = session["user_id"]
 
-        # Validate input
+        
         if not title:
             flash("Please enter a title for your question.", "danger")
         elif not body:
@@ -205,6 +209,42 @@ def question_detail(question_id):
     answers = db.execute("SELECT answers.*, users.username FROM answers JOIN users ON users.id = answers.user_id WHERE question_id = ? ORDER BY created_at ASC", question_id)
 
     return render_template("question_detail.html", question=question[0], answers=answers)
+
+@app.route("/qa/delete_question/<int:question_id>", methods=["POST"])
+@login_required
+def delete_question(question_id):
+    question = db.execute("SELECT * FROM questions WHERE id = ?", question_id)
+    if not question:
+        flash("Question not found.", "danger")
+        return redirect("/qa")
+
+    if question[0]["user_id"] != session["user_id"]:
+        flash("You can only delete your own question.", "danger")
+        return redirect("/qa")
+
+    db.execute("DELETE FROM answers WHERE question_id = ?", question_id)  
+    
+    db.execute("DELETE FROM questions WHERE id = ?", question_id)
+
+    flash("Your question was deleted.", "success")
+    return redirect("/qa")
+
+@app.route("/qa/delete_answer/<int:answer_id>", methods=["POST"])
+@login_required
+def delete_answer(answer_id):
+    answer = db.execute("SELECT * FROM answers WHERE id = ?", answer_id)
+    if not answer:
+        flash("Answer not found.", "danger")
+        return redirect("/qa")
+
+    if answer[0]["user_id"] != session["user_id"]:
+        flash("You can only delete your own answer.", "danger")
+        return redirect("/qa")
+
+    db.execute("DELETE FROM answers WHERE id = ?", answer_id)
+    flash("Your answer was deleted.", "success")
+    return redirect(f"/qa/{answer[0]['question_id']}")
+
 
 @app.route("/lesson1ofcad", methods=["GET", "POST"])
 @login_required
