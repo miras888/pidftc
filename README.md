@@ -1,5 +1,5 @@
 # PID - FTC team #24670 website(made by Miras) 
-# u can check website by typing [pidftc.com](https://pidftc.com/)
+# u can check website by typing [pidftc.com](https://pidftc.com/) or just click  the link
 PIDFTC is a multifaceted educational and community-driven platform created by the PID Team, a group of innovators from Kazakhstan. The site is built to empower learners and makers through structured content, collaborative tools, and hands-on resources in fields like engineering, design, and robotics.
 
 🔍 Overview
